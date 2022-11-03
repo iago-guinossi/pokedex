@@ -1,13 +1,17 @@
-import React from "react";
+import React, { AnchorHTMLAttributes } from "react";
 import "./Filter.css";
 import styled from "styled-components";
 
-const ContainerForm = styled.form`
-  background-color: white;
-  display: flex;
+const Container = styled.form`
+${({ theme }) => `
+    background-color: ${theme.color.background};
+    display: flex;
+  `}
 `;
 
-const TextInput = styled.input`
+const Container2 = styled(Container)``
+
+const Text = styled.input`
   background-color: transparent;
   outline: none;
   border: none;
@@ -17,7 +21,7 @@ const TextInput = styled.input`
   }
 `;
 
-const SubmitButton = styled.button`
+const Submit = styled.button`
   border-radius: 100%;
   height: 25px;
   width: 25px;
@@ -29,9 +33,9 @@ export function Filter() {
   }
 
   return (
-    <ContainerForm onSubmit={(e) => {}}>
-      <TextInput placeholder="Search your Pokemon" />
-      <SubmitButton />
-    </ContainerForm>
+    <Container onSubmit={handleSubmit}>
+      <Text placeholder="Search your Pokemon" />
+      <Submit />
+    </Container>
   );
 }
