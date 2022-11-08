@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { TagRounded } from "../TagRounded";
+import { TagRounded } from "../uiComponents/TagRounded";
 import { PokemonStatsEnum } from "../../domain/stats";
-import { Tag } from '../Tag'
+import { Tag } from '../uiComponents/Tag'
 
 type PokemonStatsProps = {
   stats: PokemonStatsEnum;

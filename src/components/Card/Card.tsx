@@ -4,7 +4,7 @@ import { PokemonTypeEnum } from "../../domain/types";
 import { PokemonType } from "../PokemonType";
 import {NumberPokemon} from '../NumberPokemon'
 import { NamePokemon } from "../NamePokemon";
-import { CardInfo } from "../CardInfo";
+import { CardInfo } from "../uiComponents/CardInfo";
 import { PokemonStats } from "../PokemonStats";
 
 const CardExt = styled.div`
