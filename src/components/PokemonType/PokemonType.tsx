@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { Tag } from "../uiComponents/Tag";
 import { PokemonTypeEnum } from "../../domain/types";
 
