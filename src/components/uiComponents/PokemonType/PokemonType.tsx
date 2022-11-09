@@ -1,5 +1,5 @@
-import { Tag } from "../uiComponents/Tag";
-import { PokemonTypeEnum } from "../../domain/types";
+import { Tag } from "../Tag";
+import { PokemonTypeEnum } from "../../../domain/types";
 
 type PokemonTypeProps = {
   type: PokemonTypeEnum;
