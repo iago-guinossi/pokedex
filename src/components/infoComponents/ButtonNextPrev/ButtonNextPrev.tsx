@@ -62,13 +62,13 @@ export function ButtonNextPrev() {
     <ButtonContainer color="lightgray">
       <PrevButton>
         <PokeImg src="/src/assets/ivysaur.svg" alt="Ivysaur" />
-        <PokeName size='12px'>Ivysaur</PokeName>
+        <PokeName size='small'>Ivysaur</PokeName>
         <PokeNumber>N°002</PokeNumber>
       </PrevButton>
       <Bar/>
       <NextButton>
         <PokeImg src="/src/assets/ivysaur.svg" alt="Ivysaur" />
-        <PokeName size='12px'>Ivysaur</PokeName>
+        <PokeName size='small'>Ivysaur</PokeName>
         <PokeNumber>N°002</PokeNumber>
       </NextButton>
     </ButtonContainer>

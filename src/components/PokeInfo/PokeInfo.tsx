@@ -51,7 +51,7 @@ export function PokeInfo() {
       <PokeImg src="/src/assets/ivysaur.svg" alt="Ivysaur" />
       <Card>
         <NumberPokemon>N°002</NumberPokemon>
-        <NamePokemon size='24px'>Ivysaur</NamePokemon>
+        <NamePokemon size='large'>Ivysaur</NamePokemon>
         <PokeTypeContainer>
           <PokemonType type={PokemonTypeEnum.Grass} />
           <PokemonType type={PokemonTypeEnum.Grass} />
