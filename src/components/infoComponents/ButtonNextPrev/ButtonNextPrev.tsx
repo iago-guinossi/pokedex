@@ -60,17 +60,30 @@ background-color: black;
 export function ButtonNextPrev() {
   return (
     <ButtonContainer color="lightgray">
+        {id > 1 ?
       <PrevButton>
-        <PokeImg src="/src/assets/ivysaur.svg" alt="Ivysaur" />
+        <PokeImg src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id-1}.svg`} alt="Ivysaur" />
         <PokeName size='small'>Ivysaur</PokeName>
         <PokeNumber>N°002</PokeNumber>
-      </PrevButton>
+      </PrevButton> : null}
       <Bar/>
+      {id < 898 ?
       <NextButton>
-        <PokeImg src="/src/assets/ivysaur.svg" alt="Ivysaur" />
+        <PokeImg src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id+1}.svg`} alt="Ivysaur" />
         <PokeName size='small'>Ivysaur</PokeName>
         <PokeNumber>N°002</PokeNumber>
-      </NextButton>
+      </NextButton> : null}
     </ButtonContainer>
   );
+}
+
+const id = 2
+
+const pokemon = await getPokemon(id)
+
+async function getPokemon(pokeNumber: number) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
+  const data = await response.json()
+  
+  return data
 }
