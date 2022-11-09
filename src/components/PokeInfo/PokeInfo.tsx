@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { PokemonTypeEnum } from "../../domain/types";
 import { CardInfo } from "../uiComponents/CardInfo";
-import { NamePokemon } from "../NamePokemon";
+import { NamePokemon } from "../uiComponents/NamePokemon";
 import { NumberPokemon } from "../NumberPokemon";
 import { PokemonStats } from "../PokemonStats";
 import { PokemonType } from "../PokemonType";
@@ -31,7 +31,7 @@ const Card = styled(CardInfo)`
   background-color: white;
   border-radius: 25px;
   justify-content: flex-start;
-  padding-top: 150px;
+  padding-top: 130px;
 `;
 
 const PokeImg = styled.img`
@@ -47,6 +47,8 @@ const PokeTypeContainer = styled.div`
   flex-direction: row;
 `;
 
+const AbilMiscContainer = styled.div``
+
 export function PokeInfo() {
   return (
     <Container>
@@ -59,8 +61,10 @@ export function PokeInfo() {
           <PokemonType type={PokemonTypeEnum.Grass} />
         </PokeTypeContainer>
         <PokemonEntry/>
+        <AbilMiscContainer>
         <PokeAbility/>
         <MiscInfo/>
+        </AbilMiscContainer>
         <PokemonStats />
         <PokemonEvo/>
         <ButtonNextPrev/>

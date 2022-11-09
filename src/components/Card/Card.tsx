@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { PokemonTypeEnum } from "../../domain/types";
 import { PokemonType } from "../PokemonType";
 import {NumberPokemon} from '../NumberPokemon'
-import { NamePokemon } from "../NamePokemon";
+import { NamePokemon } from "../uiComponents/NamePokemon";
 import { CardInfo } from "../uiComponents/CardInfo";
 import { PokemonStats } from "../PokemonStats";
 
