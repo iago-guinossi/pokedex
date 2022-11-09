@@ -18,4 +18,7 @@ export const NamePokemon = styled.span<NamePokemonProps>`
   font-size: ${({ size }) => sizeToNumberMapper(size)};
   font-weight: bold;
   font-family: "arial black";
+  &::first-letter{
+    text-transform: uppercase;
+  }
 `;

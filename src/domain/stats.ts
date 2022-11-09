@@ -1,9 +1,9 @@
 export const enum PokemonStatsEnum {
-    Hp = 'Hp',
-    Atk = 'Atk',
-    Def = 'Def',
-    Spatk = 'Spa',
-    Spdef = 'Spf',
-    Speed = 'Spd',
-    Total = 'Tot'
+    'hp' = 'Hp',
+    'attack' = 'Atk',
+    'defense' = 'Def',
+    'special-attack' = 'Spa',
+    'special-defense' = 'Spf',
+    'speed' = 'Spd',
+    'Total' = 'Tot'
 }
