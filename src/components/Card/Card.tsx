@@ -25,15 +25,36 @@ const PokeImg = styled.img`
   left: 100px;
 `;
 
+const PokeTypeContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+
 export function Card() {
   return (
     <CardExt>
-      <PokeImg src="/src/assets/ivysaur.svg" alt="Ivysaur"/>
+      <PokeImg src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.species.name}/>
       <CardInfo>
-        <NumberPokemon>N°002</NumberPokemon>
-        <NamePokemon size='medium'>Ivysaur</NamePokemon>
-        <PokemonType type={PokemonTypeEnum.Grass} />
+        <NumberPokemon>N°{id}</NumberPokemon>
+        <NamePokemon size='medium'>{pokemon.species.name}</NamePokemon>
+        <PokeTypeContainer>
+        {pokemon.types.map((type: any, i: number)=>{
+          return <PokemonType key={i} type={type.type.name} />
+        })}
+        </PokeTypeContainer>
       </CardInfo>
     </CardExt>
   );
+}
+
+const id = 2
+
+const pokemon = await getPokemon(id)
+
+async function getPokemon(pokeNumber: number) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
+  const data = await response.json()
+  
+  return data
 }

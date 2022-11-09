@@ -19,8 +19,19 @@ export function PokemonHeight() {
   return (
     <HeightContainer>
       <Title>Height</Title>
-      <Height color="lightgray">0.10m{/** 10 Decimetros */}</Height>
+      <Height color="lightgray">{(pokemon.height)/10}m{/** 10 Decimetros */}</Height>
       {/** https://pokeapi.co/api/v2/pokemon/2 */}
     </HeightContainer>
   );
+}
+
+const id = 2
+
+const pokemon = await getPokemon(id)
+
+async function getPokemon(pokeNumber: number) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
+  const data = await response.json()
+  
+  return data
 }

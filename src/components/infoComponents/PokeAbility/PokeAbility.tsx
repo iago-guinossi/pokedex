@@ -27,11 +27,25 @@ export function PokeAbility(){
         <Container>
         <Title>Abilities</Title>
         <PokeAbilityContainer>
-          <PokemonAbility color="lightgray">Overgrow</PokemonAbility>
+          {pokemon.abilities.map((abilit: any, i: number) => {
+            return <PokemonAbility key={i} color='lightgray'>{abilit.ability.name}</PokemonAbility>
+          })}
+          {/* <PokemonAbility color="lightgray">Overgrow</PokemonAbility> */}
           {/** https://pokeapi.co/api/v2/pokemon/2 */}
-          <PokemonAbility color="lightgray">chlorophyll</PokemonAbility>
+          {/* <PokemonAbility color="lightgray">chlorophyll</PokemonAbility> */}
           {/** https://pokeapi.co/api/v2/pokemon/2 */}
         </PokeAbilityContainer>
         </Container>
     )
+}
+
+const id = 2
+
+const pokemon = await getPokemon(id)
+
+async function getPokemon(pokeNumber: number) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
+  const data = await response.json()
+  
+  return data
 }

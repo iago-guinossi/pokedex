@@ -22,9 +22,20 @@ const XpTag = styled(Tag)`
 export function PokemonXp() {
   return (
     <XpContainer>
-      <Title>BASE XP</Title>
-      <XpTag color="lightgray">142 {/** https://pokeapi.co/api/v2/pokemon/2 */}
+      <Title>Base xp</Title>
+      <XpTag color="lightgray">{pokemon.base_experience} {/** https://pokeapi.co/api/v2/pokemon/2 */}
       </XpTag>
     </XpContainer>
   );
+}
+
+const id = 2
+
+const pokemon = await getPokemon(id)
+
+async function getPokemon(pokeNumber: number) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
+  const data = await response.json()
+  
+  return data
 }

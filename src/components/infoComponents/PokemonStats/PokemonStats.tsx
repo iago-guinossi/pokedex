@@ -4,21 +4,17 @@ import { PokemonStatsEnum } from "../../../domain/stats";
 import { Tag } from "../../uiComponents/Tag";
 import { Title } from "../../uiComponents/Title";
 
-type PokemonStatsProps = {
-  stats: PokemonStatsEnum;
-};
+type StatsToColorMapper = (stats: PokemonStatsEnum) => string;
 
-type TypeToColorMapper = (stats: PokemonStatsEnum) => string;
-
-const typeToColorMapper: TypeToColorMapper = (stats) =>
+const statsToColorMapper: StatsToColorMapper = (stats) =>
   ({
-    [PokemonStatsEnum.Hp]: "#ff0000",
-    [PokemonStatsEnum.Atk]: "#f08030",
-    [PokemonStatsEnum.Def]: "#f8d030",
-    [PokemonStatsEnum.Spatk]: "#6890f0",
-    [PokemonStatsEnum.Spdef]: "#78c850",
-    [PokemonStatsEnum.Speed]: "#f85888",
-    [PokemonStatsEnum.Total]: "#fae078",
+    [PokemonStatsEnum['hp']]: "#ff0000",
+    [PokemonStatsEnum['attack']]: "#f08030",
+    [PokemonStatsEnum['defense']]: "#f8d030",
+    [PokemonStatsEnum['special-attack']]: "#6890f0",
+    [PokemonStatsEnum['special-defense']]: "#78c850",
+    [PokemonStatsEnum['speed']]: "#f85888",
+    [PokemonStatsEnum['Total']]: "#fae078",
   }[stats]);
 
 const Container = styled(Tag)`
@@ -45,53 +41,90 @@ const StatsContainer = styled.div`
   align-items: center;
 `;
 
+const id = 2
+
+const pokemon = await getPokemon(id)
+
+async function getPokemon(pokeNumber: number) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
+  const data = await response.json()
+  
+  return data
+}
+
+// console.log(pokemon.stats)
+let total = 0
+
+pokemon.stats.forEach((stats: any) => total += stats.base_stat)
+
+// const total = pokemon.stats.reduce((total, stat) => total + stat, 0)
+
 export const PokemonStats = function () {
   return (
     <StatsContainer>
       <Title>Stats</Title>
       <StatsBar>
-        <Container color="lightgray">
-          <TagRounded color={typeToColorMapper(PokemonStatsEnum.Hp)}>
+        {pokemon.stats.map((stats: any, i: number)=>{
+          return(
+            <Container key={i} color="lightgray">
+              <TagRounded color={statsToColorMapper(PokemonStatsEnum[stats.stat.name])}>
+                {PokemonStatsEnum[stats.stat.name]}
+              </TagRounded>
+              <Stats color="transparent">{stats.base_stat}</Stats>
+            </Container>
+          )
+        })}
+
+        <Container color="lightblue">
+          <TagRounded color={statsToColorMapper(PokemonStatsEnum['Total'])}>
+            {PokemonStatsEnum['Total']}
+          </TagRounded>
+          <Stats color="transparent">{total}</Stats>
+        </Container>
+        {/* <Container color="lightgray">
+          <TagRounded color={statsToColorMapper(PokemonStatsEnum.Hp)}>
             {PokemonStatsEnum.Hp}
           </TagRounded>
-          <Stats color="transparent">120</Stats>
+          <Stats color="transparent">{pokemon.stats.map((stats, index)=>{
+            stats.stat.name === 'hp' ? stats.base_stat : null
+          })}</Stats>
         </Container>
         <Container color="lightgray">
-          <TagRounded color={typeToColorMapper(PokemonStatsEnum.Atk)}>
+          <TagRounded color={statsToColorMapper(PokemonStatsEnum.Atk)}>
             {PokemonStatsEnum.Atk}
           </TagRounded>
           <Stats color="transparent">120</Stats>
         </Container>
         <Container color="lightgray">
-          <TagRounded color={typeToColorMapper(PokemonStatsEnum.Def)}>
+          <TagRounded color={statsToColorMapper(PokemonStatsEnum.Def)}>
             {PokemonStatsEnum.Def}
           </TagRounded>
           <Stats color="transparent">120</Stats>
         </Container>
         <Container color="lightgray">
-          <TagRounded color={typeToColorMapper(PokemonStatsEnum.Spatk)}>
+          <TagRounded color={statsToColorMapper(PokemonStatsEnum.Spatk)}>
             {PokemonStatsEnum.Spatk}
           </TagRounded>
           <Stats color="transparent">120</Stats>
         </Container>
         <Container color="lightgray">
-          <TagRounded color={typeToColorMapper(PokemonStatsEnum.Spdef)}>
+          <TagRounded color={statsToColorMapper(PokemonStatsEnum.Spdef)}>
             {PokemonStatsEnum.Spdef}
           </TagRounded>
           <Stats color="transparent">120</Stats>
         </Container>
         <Container color="lightgray">
-          <TagRounded color={typeToColorMapper(PokemonStatsEnum.Speed)}>
+          <TagRounded color={statsToColorMapper(PokemonStatsEnum.Speed)}>
             {PokemonStatsEnum.Speed}
           </TagRounded>
           <Stats color="transparent">120</Stats>
         </Container>
         <Container color="lightblue">
-          <TagRounded color={typeToColorMapper(PokemonStatsEnum.Total)}>
+          <TagRounded color={statsToColorMapper(PokemonStatsEnum.Total)}>
             {PokemonStatsEnum.Total}
           </TagRounded>
           <Stats color="transparent">120</Stats>
-        </Container>
+        </Container> */}
       </StatsBar>
     </StatsContainer>
   );

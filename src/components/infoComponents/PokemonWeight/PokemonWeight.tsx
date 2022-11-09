@@ -20,8 +20,19 @@ export function PokemonWeight() {
   return (
     <WeightContainer>
       <Title>Width</Title>
-      <Weight color="lightgray">1.3Kg {/** 130 hectogramas */}</Weight>
+      <Weight color="lightgray">{(pokemon.weight)/10}Kg {/** 130 hectogramas */}</Weight>
       {/** https://pokeapi.co/api/v2/pokemon/2 */}
     </WeightContainer>
   );
+}
+
+const id = 2
+
+const pokemon = await getPokemon(id)
+
+async function getPokemon(pokeNumber: number) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
+  const data = await response.json()
+  
+  return data
 }

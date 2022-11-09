@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { PokemonTypeEnum } from "../../domain/types";
 import { CardInfo } from "../uiComponents/CardInfo";
 import { NamePokemon } from "../uiComponents/NamePokemon";
 import { NumberPokemon } from "../uiComponents/NumberPokemon";
@@ -48,13 +47,14 @@ const AbilMiscContainer = styled.div``
 export function PokeInfo() {
   return (
     <Container>
-      <PokeImg src="/src/assets/ivysaur.svg" alt="Ivysaur" />
+      <PokeImg src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.species.name} />
       <Card>
-        <NumberPokemon>N°002</NumberPokemon>
-        <NamePokemon size='large'>Ivysaur</NamePokemon>
+        <NumberPokemon>N°{id}</NumberPokemon>
+        <NamePokemon size='large'>{pokemon.species.name}</NamePokemon>
         <PokeTypeContainer>
-          <PokemonType type={PokemonTypeEnum.Grass} />
-          <PokemonType type={PokemonTypeEnum.Grass} />
+        {pokemon.types.map((type: any, i: number)=>{
+          return <PokemonType key={i} type={type.type.name} />
+        })}
         </PokeTypeContainer>
         <PokemonEntry/>
         <AbilMiscContainer>
@@ -67,4 +67,15 @@ export function PokeInfo() {
       </Card>
     </Container>
   );
+}
+
+const id = 2
+
+const pokemon = await getPokemon(id)
+
+async function getPokemon(pokeNumber: number) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
+  const data = await response.json()
+  
+  return data
 }
