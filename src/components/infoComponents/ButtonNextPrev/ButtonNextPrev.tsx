@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { NamePokemon } from "../../uiComponents/NamePokemon";
-import { NumberPokemon } from "../../NumberPokemon";
+import { NumberPokemon } from "../../uiComponents/NumberPokemon";
 import { Tag } from "../../uiComponents/Tag";
 
 const ButtonContainer = styled(Tag)`

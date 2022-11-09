@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { PokemonTypeEnum } from "../../domain/types";
-import { TagRounded } from "../uiComponents/TagRounded";
+import { PokemonTypeEnum } from "../../../domain/types";
+import { TagRounded } from "../../uiComponents/TagRounded";
 
 type PokemonTypeProps = {
   type: PokemonTypeEnum;

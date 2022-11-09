@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { PokemonTypeEnum } from "../../../domain/types";
-import { PokemonTypeRounded } from "../../PokemonTypeRounded";
+import { PokemonTypeRounded } from "../PokemonTypeRounded";
 import { Tag } from "../../uiComponents/Tag";
 import { Title } from "../../uiComponents/Title";
 
