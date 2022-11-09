@@ -1,11 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { PokemonTypeEnum } from "../../domain/types";
-import { PokemonType } from "../PokemonType";
-import {NumberPokemon} from '../NumberPokemon'
+import { PokemonType } from "../uiComponents/PokemonType";
+import {NumberPokemon} from '../uiComponents/NumberPokemon'
 import { NamePokemon } from "../uiComponents/NamePokemon";
 import { CardInfo } from "../uiComponents/CardInfo";
-import { PokemonStats } from "../PokemonStats";
 
 const CardExt = styled.div`
   background-color: black;

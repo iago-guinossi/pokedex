@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { PokemonTypeEnum } from "../../domain/types";
-import { PokemonType } from "../PokemonType";
+import { PokemonType } from "../uiComponents/PokemonType";
 
 const Container = styled.form`
   ${({ theme }) => `
