@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useChosePokemon } from "../../Provider/ChosePokemonProvider";
+import { usePokemonDetails } from "../../Provider/ChosePokemonProvider/PokemonDetails";
 import { Tag } from "../../uiComponents/Tag";
 import { Title } from "../../uiComponents/Title";
 
@@ -16,6 +18,8 @@ const Height = styled(Tag)`
 `;
 
 export function PokemonHeight() {
+  const pokemonDetails = usePokemonDetails()
+  const pokemon = pokemonDetails?.pokemonInfo.pokemon
   return (
     <HeightContainer>
       <Title>Height</Title>
@@ -25,13 +29,13 @@ export function PokemonHeight() {
   );
 }
 
-const id = 2
+// const id = 2
 
-const pokemon = await getPokemon(id)
+// const pokemon = await getPokemon(id)
 
-async function getPokemon(pokeNumber: number) {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
-  const data = await response.json()
+// async function getPokemon(pokeNumber: number) {
+//   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
+//   const data = await response.json()
   
-  return data
-}
+//   return data
+// }

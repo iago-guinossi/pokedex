@@ -3,6 +3,8 @@ import { TagRounded } from "../../uiComponents/TagRounded";
 import { PokemonStatsEnum } from "../../../domain/stats";
 import { Tag } from "../../uiComponents/Tag";
 import { Title } from "../../uiComponents/Title";
+import { useChosePokemon } from "../../Provider/ChosePokemonProvider";
+import { usePokemonDetails } from "../../Provider/ChosePokemonProvider/PokemonDetails";
 
 type StatsToColorMapper = (stats: PokemonStatsEnum) => string;
 
@@ -41,25 +43,26 @@ const StatsContainer = styled.div`
   align-items: center;
 `;
 
-const id = 2
+// const id = 2
 
-const pokemon = await getPokemon(id)
+// const pokemon = await getPokemon(id)
 
-async function getPokemon(pokeNumber: number) {
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
-  const data = await response.json()
+// async function getPokemon(pokeNumber: number) {
+//   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
+//   const data = await response.json()
   
-  return data
-}
+//   return data
+// }
 
 // console.log(pokemon.stats)
-let total = 0
-
-pokemon.stats.forEach((stats: any) => total += stats.base_stat)
 
 // const total = pokemon.stats.reduce((total, stat) => total + stat, 0)
 
 export const PokemonStats = function () {
+  const pokemonDetails = usePokemonDetails()
+  const pokemon = pokemonDetails?.pokemonInfo.pokemon
+  let total = 0
+  pokemon.stats.forEach((stats: any) => total += stats.base_stat)
   return (
     <StatsContainer>
       <Title>Stats</Title>
