@@ -1,13 +1,12 @@
 // import "./App.css";
-import { Filter } from "./components/Filter";
-import styled, { ThemeProvider } from "styled-components";
-import { THEME_RAIOROS } from "./styles";
-import { Card } from "./components/Card";
-import { PokeInfo } from "./components/PokeInfo";
-import { CardContainer } from "./components/CardContainer";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ChosePokemonProvider } from "./components/Provider/ChosePokemonProvider";
-import { PokemonDetailsProvider, usePokemonDetails } from "./components/Provider/ChosePokemonProvider/PokemonDetails";
+import styled, { ThemeProvider } from "styled-components";
+import { List } from "./components/Card";
+import { Filter } from "./components/Filter";
+import { PokeInfo } from "./components/PokeInfo";
+import { PokemonListProvider, usePokemonList } from "./components/Provider/ListPokemonProvider";
+import { PokemonDetailsProvider } from "./components/Provider/PokemonDetails/PokemonDetails";
+import { THEME_RAIOROS } from "./styles";
 
 const Container = styled.div`
   display: flex;
@@ -21,22 +20,21 @@ const SubContainer = styled.div`
 const queryClient = new QueryClient();
 
 function App() {
-  const pokemon = usePokemonDetails()
   return (
     <QueryClientProvider client={queryClient}>
-      <PokemonDetailsProvider>
-      <ChosePokemonProvider>
-        <Container>
-          <ThemeProvider theme={THEME_RAIOROS}>
-            <SubContainer>
-              <Filter />
-              <Card />
-            </SubContainer>
-            {pokemon?.pokemonInfo === null ? null : (pokemon?.status === 'loading' ? <div>Loading</div> : <PokeInfo/>) }
-          </ThemeProvider>
-        </Container>
-      </ChosePokemonProvider>
-      </PokemonDetailsProvider>
+      <PokemonListProvider>
+        <PokemonDetailsProvider>
+          <Container>
+            <ThemeProvider theme={THEME_RAIOROS}>
+              <SubContainer>
+                <Filter />
+                <List />
+              </SubContainer>
+              <PokeInfo />
+            </ThemeProvider>
+          </Container>
+        </PokemonDetailsProvider>
+      </PokemonListProvider>
     </QueryClientProvider>
   );
 }
