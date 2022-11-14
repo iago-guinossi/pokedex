@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { PokemonTypeEnum } from "../../domain/types";
-import { useChosePokemon } from "../Provider/ChosePokemonProvider";
+import { useChosePokemon } from "../Provider/ListPokemonProvider";
 import { PokemonType } from "../uiComponents/PokemonType";
-import { useId } from "../Provider/ChosePokemonProvider";
+import { useId } from "../Provider/ListPokemonProvider";
 
 const Container = styled.form`
   ${({ theme }) => `
