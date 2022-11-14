@@ -3,8 +3,8 @@ import { TagRounded } from "../../uiComponents/TagRounded";
 import { PokemonStatsEnum } from "../../../domain/stats";
 import { Tag } from "../../uiComponents/Tag";
 import { Title } from "../../uiComponents/Title";
-import { useChosePokemon } from "../../Provider/ChosePokemonProvider";
-import { usePokemonDetails } from "../../Provider/ChosePokemonProvider/PokemonDetails";
+import { useChosePokemon } from "../../Provider/ListPokemonProvider";
+import { usePokemonDetails } from "../../Provider/PokemonDetails/PokemonDetails";
 
 type StatsToColorMapper = (stats: PokemonStatsEnum) => string;
 

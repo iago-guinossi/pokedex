@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useChosePokemon } from "../../Provider/ChosePokemonProvider";
-import { usePokemonDetails } from "../../Provider/ChosePokemonProvider/PokemonDetails";
+import { useChosePokemon } from "../../Provider/ListPokemonProvider";
+import { usePokemonDetails } from "../../Provider/PokemonDetails/PokemonDetails";
 import { Title } from "../../uiComponents/Title";
 
 const PokeEntry = styled.span`

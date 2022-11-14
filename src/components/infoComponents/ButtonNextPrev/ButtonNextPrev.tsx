@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useChosePokemon } from "../../Provider/ChosePokemonProvider";
-import { usePokemonDetails } from "../../Provider/ChosePokemonProvider/PokemonDetails";
+import { useChosePokemon } from "../../Provider/ListPokemonProvider";
+import { usePokemonDetails } from "../../Provider/PokemonDetails/PokemonDetails";
 import { NamePokemon } from "../../uiComponents/NamePokemon";
 import { NumberPokemon } from "../../uiComponents/NumberPokemon";
 import { Tag } from "../../uiComponents/Tag";
