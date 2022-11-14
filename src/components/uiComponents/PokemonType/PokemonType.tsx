@@ -2,7 +2,7 @@ import { Tag } from "../Tag";
 import { PokemonTypeEnum } from "../../../domain/types";
 
 type PokemonTypeProps = {
-  type: PokemonTypeEnum;
+  type: PokemonTypeEnum | string;
 };
 
 type TypeToColorMapper = (type: PokemonTypeEnum) => string;
