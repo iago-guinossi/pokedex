@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { pokemonApi } from "../../../Api";
+import { GetPokemonResponse } from "../../../domain/pokemon";
 
 type PokemonDetail = {
   pokemonInfo: any | null;

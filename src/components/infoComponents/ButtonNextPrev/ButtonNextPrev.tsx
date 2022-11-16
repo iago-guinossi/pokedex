@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { PokemonEntry } from "../../../domain/pokedex";
 import { usePokemonDetails } from "../../Provider/PokemonDetails/PokemonDetails";
 import { NamePokemon } from "../../uiComponents/NamePokemon";
 import { NumberPokemon } from "../../uiComponents/NumberPokemon";
@@ -65,8 +66,8 @@ export function ButtonNextPrev() {
   const pokemonDetails = usePokemonDetails()
   const pokedex = pokemonDetails?.pokemonInfo.pokedex
   const pokemonSpecies = pokemonDetails?.pokemonInfo.pokemonSpecies
-  const prev = pokedex.pokemon_entries.find((pokemon) => pokemon.entry_number === pokemonSpecies.pokedex_numbers[0].entry_number-1)
-  const next = pokedex.pokemon_entries.find((pokemon) => pokemon.entry_number === pokemonSpecies.pokedex_numbers[0].entry_number+1)
+  const prev = pokedex.pokemon_entries.find((pokemon: PokemonEntry) => pokemon.entry_number === pokemonSpecies.pokedex_numbers[0].entry_number-1)
+  const next = pokedex.pokemon_entries.find((pokemon: PokemonEntry) => pokemon.entry_number === pokemonSpecies.pokedex_numbers[0].entry_number+1)
   return (
     <ButtonContainer color="lightgray">
         {pokemonSpecies.pokedex_numbers[0].entry_number > 1 ?
