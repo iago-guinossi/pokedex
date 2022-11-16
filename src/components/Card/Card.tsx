@@ -53,6 +53,14 @@ padding: 30px 0;
 margin: 15px 0;
 cursor: pointer;
 `
+const LoadContainer = styled.div`
+width: 480px;
+padding: 20px 0;
+`
+
+const LoadCard = styled(CardInfo)`
+padding: 30px 0;
+`
 
 type PokemonCardProps = {
   pokemon: GetPokemonResponse;
@@ -88,9 +96,13 @@ function PokemonCard({ pokemon, id }: PokemonCardProps) {
 export function List() {
   const { nextPage, isLoading, pokeList, prevPage, page } = usePokemonList();
 
-  if ((pokeList || []).length < 1)
+  useEffect(()=>{
+    nextPage()
+  },[])
+
+  if (isLoading)
     return (
-        <Button onClick={nextPage}>Start List Pokekon!</Button>
+      <LoadContainer> <LoadCard>Loading Pokemon!</LoadCard> </LoadContainer>
     );
 
   return (
@@ -102,7 +114,7 @@ export function List() {
     </Container>
       {page.offset > 898 ? null :<Button onClick={nextPage}>Next Page!</Button>}
 
-      {page.offset === 6 ? null : <Button onClick={prevPage}>Previous Page!</Button>}
+      {page.offset === 20 ? null : <Button onClick={prevPage}>Previous Page!</Button>}
     </CardContainer>
   );
 }
