@@ -13,9 +13,18 @@ import { NumberPokemon } from "../uiComponents/NumberPokemon";
 import { PokemonType } from "../uiComponents/PokemonType";
 
 const Container = styled.div`
-  /* width: 480px; */
+  max-width: 480px;
   display: block;
   `;
+
+const LoadContainer = styled.div`
+width: 480px;
+padding: 20px 0;
+`
+
+const LoadCard = styled(CardInfo)`
+padding: 30px 0;
+`
 
 const Card = styled(CardInfo)`
   width: 100%;
@@ -26,10 +35,15 @@ const Card = styled(CardInfo)`
   padding-top: 130px;
 `;
 
+const ImgContainer = styled.div`
+margin-bottom: -230px;
+width: 100%;
+display:flex;
+justify-content:center;
+`
 const PokeImg = styled.img`
   height: 230px;
   width: 230px;
-  margin: -230px auto;
 `;
 
 const PokeTypeContainer = styled.div`
@@ -50,14 +64,16 @@ export function PokeInfo() {
 
   if (pokemonDetails?.pokemonInfo === null) return null;
 
-  if (pokemonDetails?.isLoading) return <Container><Card>'CARREGANDO POKEMON'</Card></Container>;
+  if (pokemonDetails?.isLoading) return <LoadContainer> <LoadCard>Loading Pokemon!</LoadCard> </LoadContainer>;
 
   return (
     <Container>
+      <ImgContainer>
       <PokeImg
         src={pokemonSpecies.pokedex_numbers[0].entry_number > 649 ? pokemon.sprites.front_default : pokemon.sprites.other.dream_world.front_default}
         alt={pokemon.species.name}
       />
+      </ImgContainer>
       <Card onClick={() => handleClick()}>
         <NumberPokemon>
           N°{pokemonSpecies.pokedex_numbers[0].entry_number}

@@ -49,6 +49,7 @@ const CardInt = styled(CardInfo)`
 
 const Button = styled(CardInfo)`
 padding: 30px 0;
+margin: 15px 0;
 `
 
 type PokemonCardProps = {

@@ -31,7 +31,6 @@ export function PokemonDetailsProvider({
     pokemonSpecies = await pokemonApi.fetchPokemonSpecies(pokemon);
     evolutionChain = await pokemonApi.fetchEvolutionChain(pokemonSpecies);
     pokedex = await pokemonApi.fetchPokedex();
-
     setPokemonInfo({
       pokemon,
       pokemonSpecies: pokemonSpecies,
