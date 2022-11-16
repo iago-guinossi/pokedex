@@ -16,7 +16,7 @@ export function MiscInfo(){
         <MiscGrid>
             <PokemonHeight/>
             <PokemonWeight/>
-            <Weaknesses/>
+            {/* <Weaknesses/> */}
             <PokemonXp/>
         </MiscGrid>
     )
