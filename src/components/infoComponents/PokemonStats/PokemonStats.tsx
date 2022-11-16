@@ -56,9 +56,9 @@ export const PokemonStats = function () {
           return (
             <Container key={i} color="lightgray">
               <TagRounded
-                color={statsToColorMapper(PokemonStatsEnum[stats.stat.name])}
+                color={statsToColorMapper(PokemonStatsEnum[stats.stat.name as keyof StatsToColorMapper])}
               >
-                {PokemonStatsEnum[stats.stat.name]}
+                {PokemonStatsEnum[stats.stat.name as keyof StatsToColorMapper]}
               </TagRounded>
               <Stats color="transparent">{stats.base_stat}</Stats>
             </Container>

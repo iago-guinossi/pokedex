@@ -30,5 +30,5 @@ const typeToColorMapper: TypeToColorMapper = (type) =>
   }[type]);
 
 export const PokemonType = function ({ type }: PokemonTypeProps) {
-  return <Tag color={typeToColorMapper(type)}>{type}</Tag>;
+  return <Tag color={typeToColorMapper(type as keyof TypeToColorMapper)}>{type}</Tag>;
 };

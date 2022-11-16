@@ -3,7 +3,7 @@ import { pokemonApi } from "../../../Api";
 import { GetPokemonResponse } from "../../../domain/pokemon";
 
 type ContextType = {
-  pokeList?: GetPokemonResponse[];
+  pokeList?: (GetPokemonResponse | null)[];
   isLoading: boolean;
   nextPage: () => void;
   prevPage: () => void;
@@ -29,7 +29,7 @@ type Page = {
 
 export function PokemonListProvider({ children }: PokemonListProviderProps) {
   const [page, setPage] = useState<Page>({ size: 20, offset: 0 });
-  const [pokeList, setPokeList] = useState<GetPokemonResponse[]>([]);
+  const [pokeList, setPokeList] = useState<(GetPokemonResponse | null)[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const nextPage = async () => {
