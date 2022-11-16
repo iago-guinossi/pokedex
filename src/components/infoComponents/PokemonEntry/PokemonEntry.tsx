@@ -6,6 +6,13 @@ import { Title } from "../../uiComponents/Title";
 const PokeEntry = styled.span`
 padding: 0 15px;
 text-align: center;`
+
+const ContainerEntry = styled.div`
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
   
 
   export function PokemonEntry() {
@@ -14,13 +21,13 @@ text-align: center;`
   const entry = pokemonSpecies.flavor_text_entries.find((entries) => entries.language.name === 'en')
 
   return (
-    <>
+    <ContainerEntry>
       <Title>Pokedex Entry</Title>
       <PokeEntry>
         {(entry.flavor_text).replace('\n', '').replace('\f', '')}
       </PokeEntry>
       {/** https://pokeapi.co/api/v2/pokemon-species/{id or name}/ */}
-    </>
+    </ContainerEntry>
   );
 }
 

@@ -11,7 +11,7 @@ import { PokemonType } from "../uiComponents/PokemonType";
 const CardExt = styled.div`
   height: 260px;
   width: 300px;
-  margin: 20px;
+  margin: 15px;
   position: relative;
   box-sizing: border-box;
   display: flex;
@@ -66,7 +66,7 @@ function PokemonCard({ pokemon, id }: PokemonCardProps) {
   return (
     <CardExt key={id} onClick={() => handleClick(id + 1)}>
       <PokeImg
-        src={pokemon.sprites.other.dream_world.front_default}
+        src={id > 649 ? pokemon.sprites.front_default : pokemon.sprites.other.dream_world.front_default}
         alt={pokemon.species.name}
       />
       <CardInt>
@@ -82,7 +82,6 @@ function PokemonCard({ pokemon, id }: PokemonCardProps) {
   );
 }
 
-// TODO: Refactor to List()
 export function List() {
   const { nextPage, isLoading, pokeList, prevPage, page } = usePokemonList();
 
@@ -95,10 +94,10 @@ export function List() {
     <CardContainer>
     <Container>
       {pokeList?.map((poke) => (
-        <PokemonCard pokemon={poke} key={poke.name} id={poke.id} />
+          poke === null ? null: <PokemonCard pokemon={poke} key={poke.name} id={poke.id} />
       ))}
     </Container>
-      <Button onClick={nextPage}>Next Page!</Button>
+      {page.offset > 898 ? null :<Button onClick={nextPage}>Next Page!</Button>}
 
       {page.offset === 6 ? null : <Button onClick={prevPage}>Previous Page!</Button>}
     </CardContainer>

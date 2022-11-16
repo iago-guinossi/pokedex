@@ -13,10 +13,9 @@ import { NumberPokemon } from "../uiComponents/NumberPokemon";
 import { PokemonType } from "../uiComponents/PokemonType";
 
 const Container = styled.div`
-  width: 480px;
-  position: relative;
+  /* width: 480px; */
   display: block;
-`;
+  `;
 
 const Card = styled(CardInfo)`
   width: 100%;
@@ -28,11 +27,9 @@ const Card = styled(CardInfo)`
 `;
 
 const PokeImg = styled.img`
-  position: absolute;
   height: 230px;
   width: 230px;
-  top: 0;
-  left: 125px;
+  margin: -230px auto;
 `;
 
 const PokeTypeContainer = styled.div`
@@ -58,7 +55,7 @@ export function PokeInfo() {
   return (
     <Container>
       <PokeImg
-        src={pokemon.sprites.other.dream_world.front_default}
+        src={pokemonSpecies.pokedex_numbers[0].entry_number > 649 ? pokemon.sprites.front_default : pokemon.sprites.other.dream_world.front_default}
         alt={pokemon.species.name}
       />
       <Card onClick={() => handleClick()}>

@@ -58,7 +58,7 @@ function renderEvo(evoList) {
         return (
             <span key={sprite.entry_number}>
       <Img
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${sprite.entry_number}.svg`}
+        src={sprite.entry_number > 649 ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${sprite.entry_number}.png` : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${sprite.entry_number}.svg`}
         alt={sprite.pokemon_species.name}
         />
       {evoList.evolves_to.length > 0
@@ -75,14 +75,6 @@ export function PokemonEvo() {
     <>
       <Title>Evolution</Title>
       <EvoContainer>{renderEvo(evolutionChain.chain)}</EvoContainer>
-      {/* <Title>Evolution</Title>
-        <EvoContainer>
-        <Img src="/src/assets/ivysaur.svg" alt="Ivysaur"/>
-        <Tag color='lightgray'>Lv 16</Tag>
-        <Img src="/src/assets/ivysaur.svg" alt="Ivysaur"/>
-        <Tag color='lightgray'>Lv 36</Tag>
-        <Img src="/src/assets/ivysaur.svg" alt="Ivysaur"/>
-        </EvoContainer> */}
     </>
   ) : (
     <></>

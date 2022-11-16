@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useChosePokemon } from "../../Provider/ListPokemonProvider";
 import { usePokemonDetails } from "../../Provider/PokemonDetails/PokemonDetails";
 import { NamePokemon } from "../../uiComponents/NamePokemon";
 import { NumberPokemon } from "../../uiComponents/NumberPokemon";
@@ -72,14 +71,14 @@ export function ButtonNextPrev() {
     <ButtonContainer color="lightgray">
         {pokemonSpecies.pokedex_numbers[0].entry_number > 1 ?
       <PrevButton onClick={() => handleClick(prev.entry_number)}>
-        <PokeImg src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${prev.entry_number}.svg`} alt={prev.pokemon_species.name} />
+        <PokeImg src={prev.entry_number > 649 ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${prev.entry_number}.png` : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${prev.entry_number}.svg`} alt={prev.pokemon_species.name} />
         <PokeName size='small'>{prev.pokemon_species.name}</PokeName>
         <PokeNumber>N°{prev.entry_number}</PokeNumber>
       </PrevButton> : null}
       <Bar/>
       {pokemonSpecies.pokedex_numbers[0].entry_number < 898 ?
       <NextButton onClick={() => handleClick(next.entry_number)}>
-        <PokeImg src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${next.entry_number}.svg`} alt={next.pokemon_species.name} />
+        <PokeImg src={next.entry_number > 649 ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${next.entry_number}.png` : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${next.entry_number}.svg`} alt={next.pokemon_species.name} />
         <PokeName size='small'>{next.pokemon_species.name}</PokeName>
         <PokeNumber>N°{next.entry_number}</PokeNumber>
       </NextButton> : null}
