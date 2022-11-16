@@ -16,6 +16,7 @@ const CardExt = styled.div`
   box-sizing: border-box;
   display: flex;
   align-items: flex-end;
+  cursor: pointer;
 `;
 
 const CardContainer = styled.div`
@@ -50,6 +51,7 @@ const CardInt = styled(CardInfo)`
 const Button = styled(CardInfo)`
 padding: 30px 0;
 margin: 15px 0;
+cursor: pointer;
 `
 
 type PokemonCardProps = {

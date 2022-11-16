@@ -43,6 +43,7 @@ const Submit = styled.button`
   background-color: #ff5350;
   background-size: 20px;
   box-shadow: 15px 15px 20px rgba(255, 83, 80, 0.6);
+  cursor: pointer;
 `;
 
 export function Filter() {
