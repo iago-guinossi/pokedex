@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from "styled-components";
 import { List } from "./components/Card";
 import { Filter } from "./components/Filter";
 import { PokeInfo } from "./components/PokeInfo";
-import { PokemonListProvider, usePokemonList } from "./components/Provider/ListPokemonProvider";
+import { PokemonListProvider } from "./components/Provider/ListPokemonProvider";
 import { PokemonDetailsProvider } from "./components/Provider/PokemonDetails/PokemonDetails";
 import { THEME_RAIOROS } from "./styles";
 
