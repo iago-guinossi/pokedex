@@ -6,12 +6,16 @@ type ContextType = {
   pokeList?: GetPokemonResponse[];
   isLoading: boolean;
   nextPage: () => void;
+  prevPage: () => void;
+  page: {size: number, offset: number};
 };
 
 const PokemonListContext = createContext<ContextType>({
   pokeList: [],
   isLoading: false,
   nextPage() {},
+  prevPage() {},
+  page: { size: 6, offset: 0 }
 });
 
 type PokemonListProviderProps = {
@@ -36,18 +40,35 @@ export function PokemonListProvider({ children }: PokemonListProviderProps) {
       return pokemonApi.fetchPokemonByNumber(id);
     }); 
     const data = await Promise.all(list);
-
+    
     setPage(({ offset, size }) => {
       const result = { size, offset: offset + size };
-
+      
       return result;
     });
     setPokeList(data);
     setIsLoading(false);
   };
+  
+  const prevPage = async () => {
+    setIsLoading(true);
+    setPage(({ offset, size }) => {
+      const result = { size, offset: offset - size };
 
+      return result;})
+      console.log(page)
+    const list = Array.from({ length: page.size }, (_, idx) => {
+      const id = idx + 1 + page.offset - 2*page.size;
+      return pokemonApi.fetchPokemonByNumber(id);
+    }); 
+    const data = await Promise.all(list);
+
+    setPokeList(data);
+    setIsLoading(false);
+  };
+  console.log(page)
   return (
-    <PokemonListContext.Provider value={{ pokeList, isLoading, nextPage }}>
+    <PokemonListContext.Provider value={{ pokeList, isLoading, nextPage, prevPage, page }}>
       {children}
     </PokemonListContext.Provider>
   );
