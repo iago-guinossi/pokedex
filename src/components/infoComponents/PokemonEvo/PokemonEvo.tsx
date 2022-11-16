@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useChosePokemon } from "../../Provider/ListPokemonProvider";
+import { PokemonEntry } from "../../../domain/pokedex";
+import { Chain } from "../../../domain/pokemonEvo";
 import { usePokemonDetails } from "../../Provider/PokemonDetails/PokemonDetails";
-import { Tag } from "../../uiComponents/Tag";
 import { Title } from "../../uiComponents/Title";
 
 const Img = styled.img`
@@ -20,11 +20,11 @@ const Evolution = styled.div`
   justify-content: center;
 `;
 
-function renderEvo(evoList) {
+function renderEvo(evoList: Chain) {
   const pokemonDetails = usePokemonDetails();
   const pokedex = pokemonDetails?.pokemonInfo.pokedex;
   const sprite = pokedex.pokemon_entries.find(
-    (poke) => poke.pokemon_species.name === evoList.species.name
+    (poke: PokemonEntry) => poke.pokemon_species.name === evoList.species.name
   );
 
   const handleClick = (id: string | number) => {
@@ -33,7 +33,8 @@ function renderEvo(evoList) {
 
   return (
     <Evolution key={sprite.entry_number}>
-      <Img onClick={() => handleClick(sprite.entry_number)}
+      <Img
+        onClick={() => handleClick(sprite.entry_number)}
         src={
           sprite.entry_number > 649
             ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${sprite.entry_number}.png`

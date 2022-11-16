@@ -1,9 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { PokemonTypeEnum } from "../../domain/types";
-import { useChosePokemon } from "../Provider/ListPokemonProvider";
-import { PokemonType } from "../uiComponents/PokemonType";
-import { useId } from "../Provider/ListPokemonProvider";
 import { usePokemonDetails } from "../Provider/PokemonDetails";
 
 const Container = styled.form`
@@ -47,7 +43,7 @@ const Submit = styled.button`
 `;
 
 export function Filter() {
-  const pokeDetails = usePokemonDetails()
+  const pokeDetails = usePokemonDetails();
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!name) {
@@ -64,10 +60,13 @@ export function Filter() {
   }
 
   return (
-  
-      <Container onSubmit={handleSubmit}>
-        <Text onChange={handleChange} value={name} placeholder="Search your Pokemon!" />
-        <Submit />
-      </Container>
+    <Container onSubmit={handleSubmit}>
+      <Text
+        onChange={handleChange}
+        value={name}
+        placeholder="Search your Pokemon!"
+      />
+      <Submit />
+    </Container>
   );
 }

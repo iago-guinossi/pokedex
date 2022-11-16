@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { useChosePokemon } from "../../Provider/ListPokemonProvider";
 import { usePokemonDetails } from "../../Provider/PokemonDetails/PokemonDetails";
-import { NamePokemon } from "../../uiComponents/NamePokemon";
 import { Tag } from "../../uiComponents/Tag";
 import { Title } from "../../uiComponents/Title";
 
@@ -16,27 +14,18 @@ const Weight = styled(Tag)`
   width: 100%;
   box-sizing: border-box;
   text-align: center;
-  `;
+`;
 
 export function PokemonWeight() {
-  const pokemonDetails = usePokemonDetails()
-  const pokemon = pokemonDetails?.pokemonInfo.pokemon
+  const pokemonDetails = usePokemonDetails();
+  const pokemon = pokemonDetails?.pokemonInfo.pokemon;
   return (
     <WeightContainer>
       <Title>Weight</Title>
-      <Weight color="lightgray">{(pokemon.weight)/10}Kg {/** 130 hectogramas */}</Weight>
+      <Weight color="lightgray">
+        {pokemon.weight / 10}Kg {/** 130 hectogramas */}
+      </Weight>
       {/** https://pokeapi.co/api/v2/pokemon/2 */}
     </WeightContainer>
   );
 }
-
-// const id = 2
-
-// const pokemon = await getPokemon(id)
-
-// async function getPokemon(pokeNumber: number) {
-//   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
-//   const data = await response.json()
-  
-//   return data
-// }

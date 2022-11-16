@@ -15,16 +15,16 @@ import { PokemonType } from "../uiComponents/PokemonType";
 const Container = styled.div`
   max-width: 440px;
   display: block;
-  `;
+`;
 
 const LoadContainer = styled.div`
-width: 480px;
-padding: 20px 0;
-`
+  width: 480px;
+  padding: 20px 0;
+`;
 
 const LoadCard = styled(CardInfo)`
-padding: 30px 0;
-`
+  padding: 30px 0;
+`;
 
 const Card = styled(CardInfo)`
   width: 100%;
@@ -36,11 +36,11 @@ const Card = styled(CardInfo)`
 `;
 
 const ImgContainer = styled.div`
-margin-bottom: -230px;
-width: 100%;
-display:flex;
-justify-content:center;
-`
+  margin-bottom: -230px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 const PokeImg = styled.img`
   height: 230px;
   width: 230px;
@@ -54,12 +54,12 @@ const PokeTypeContainer = styled.div`
 const AbilMiscContainer = styled.div``;
 
 const Close = styled.div`
-align-self: flex-end;
-margin-top: -100px;
-margin-right: 15px;
-position: absolute;
-cursor: pointer;
-`
+  align-self: flex-end;
+  margin-top: -100px;
+  margin-right: 15px;
+  position: absolute;
+  cursor: pointer;
+`;
 
 export function PokeInfo() {
   const pokemonDetails = usePokemonDetails();
@@ -72,18 +72,30 @@ export function PokeInfo() {
 
   if (pokemonDetails?.pokemonInfo === null) return null;
 
-  if (pokemonDetails?.isLoading) return <LoadContainer> <LoadCard>Loading Pokemon!</LoadCard> </LoadContainer>;
+  if (pokemonDetails?.isLoading)
+    return (
+      <LoadContainer>
+        {" "}
+        <LoadCard>Loading Pokemon!</LoadCard>{" "}
+      </LoadContainer>
+    );
 
   return (
     <Container>
       <ImgContainer>
-      <PokeImg
-        src={pokemonSpecies.pokedex_numbers[0].entry_number > 649 ? pokemon.sprites.front_default : pokemon.sprites.other.dream_world.front_default}
-        alt={pokemon.species.name}
-      />
+        <PokeImg
+          src={
+            pokemonSpecies.pokedex_numbers[0].entry_number > 649
+              ? pokemon.sprites.front_default
+              : pokemon.sprites.other.dream_world.front_default
+          }
+          alt={pokemon.species.name}
+        />
       </ImgContainer>
       <Card>
-        <Close  onClick={() => handleClick()}><NamePokemon size="large">X</NamePokemon></Close>
+        <Close onClick={() => handleClick()}>
+          <NamePokemon size="large">X</NamePokemon>
+        </Close>
         <NumberPokemon>
           N°{pokemonSpecies.pokedex_numbers[0].entry_number}
         </NumberPokemon>

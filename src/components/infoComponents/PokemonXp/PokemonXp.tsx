@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useChosePokemon } from "../../Provider/ListPokemonProvider";
 import { usePokemonDetails } from "../../Provider/PokemonDetails/PokemonDetails";
 import { Tag } from "../../uiComponents/Tag";
 import { Title } from "../../uiComponents/Title";
@@ -15,31 +14,21 @@ const XpTag = styled(Tag)`
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content:center;
+  justify-content: center;
   box-sizing: border-box;
   font-size: 16px;
   padding: 10px;
 `;
 
 export function PokemonXp() {
-  const pokemonDetails = usePokemonDetails()
-  const pokemon = pokemonDetails?.pokemonInfo.pokemon
+  const pokemonDetails = usePokemonDetails();
+  const pokemon = pokemonDetails?.pokemonInfo.pokemon;
   return (
     <XpContainer>
       <Title>Base xp</Title>
-      <XpTag color="lightgray">{pokemon.base_experience} {/** https://pokeapi.co/api/v2/pokemon/2 */}
+      <XpTag color="lightgray">
+        {pokemon.base_experience} {/** https://pokeapi.co/api/v2/pokemon/2 */}
       </XpTag>
     </XpContainer>
   );
 }
-
-// const id = 2
-
-// const pokemon = await getPokemon(id)
-
-// async function getPokemon(pokeNumber: number) {
-//   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeNumber}`)
-//   const data = await response.json()
-  
-//   return data
-// }

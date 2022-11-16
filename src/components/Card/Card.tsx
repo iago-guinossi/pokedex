@@ -20,9 +20,9 @@ const CardExt = styled.div`
 `;
 
 const CardContainer = styled.div`
-display:flex;
-flex-direction: column;
-`
+  display: flex;
+  flex-direction: column;
+`;
 
 const PokeImg = styled.img`
   position: absolute;
@@ -49,18 +49,18 @@ const CardInt = styled(CardInfo)`
 `;
 
 const Button = styled(CardInfo)`
-padding: 30px 0;
-margin: 15px 0;
-cursor: pointer;
-`
+  padding: 30px 0;
+  margin: 15px 0;
+  cursor: pointer;
+`;
 const LoadContainer = styled.div`
-width: 480px;
-padding: 20px 0;
-`
+  width: 480px;
+  padding: 20px 0;
+`;
 
 const LoadCard = styled(CardInfo)`
-padding: 30px 0;
-`
+  padding: 30px 0;
+`;
 
 type PokemonCardProps = {
   pokemon: GetPokemonResponse;
@@ -77,7 +77,11 @@ function PokemonCard({ pokemon, id }: PokemonCardProps) {
   return (
     <CardExt key={id} onClick={() => handleClick(id)}>
       <PokeImg
-        src={id > 649 ? pokemon.sprites.front_default : pokemon.sprites.other.dream_world.front_default}
+        src={
+          id > 649
+            ? pokemon.sprites.front_default
+            : pokemon.sprites.other.dream_world.front_default
+        }
         alt={pokemon.species.name}
       />
       <CardInt>
@@ -96,25 +100,34 @@ function PokemonCard({ pokemon, id }: PokemonCardProps) {
 export function List() {
   const { nextPage, isLoading, pokeList, prevPage, page } = usePokemonList();
 
-  useEffect(()=>{
-    nextPage()
-  },[])
+  useEffect(() => {
+    nextPage();
+  }, []);
 
   if (isLoading)
     return (
-      <LoadContainer> <LoadCard>Loading Pokemon!</LoadCard> </LoadContainer>
+      <LoadContainer>
+        {" "}
+        <LoadCard>Loading Pokemon!</LoadCard>{" "}
+      </LoadContainer>
     );
 
   return (
     <CardContainer>
-    <Container>
-      {pokeList?.map((poke) => (
-          poke === null ? null: <PokemonCard pokemon={poke} key={poke.name} id={poke.id} />
-      ))}
-    </Container>
-      {page.offset > 898 ? null :<Button onClick={nextPage}>Next Page!</Button>}
+      <Container>
+        {pokeList?.map((poke) =>
+          poke === null ? null : (
+            <PokemonCard pokemon={poke} key={poke.name} id={poke.id} />
+          )
+        )}
+      </Container>
+      {page.offset > 898 ? null : (
+        <Button onClick={nextPage}>Next Page!</Button>
+      )}
 
-      {page.offset === 20 ? null : <Button onClick={prevPage}>Previous Page!</Button>}
+      {page.offset === 20 ? null : (
+        <Button onClick={prevPage}>Previous Page!</Button>
+      )}
     </CardContainer>
   );
 }

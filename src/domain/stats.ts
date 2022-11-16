@@ -1,4 +1,4 @@
-export const enum PokemonStatsEnum {
+export enum PokemonStatsEnum {
     'hp' = 'Hp',
     'attack' = 'Atk',
     'defense' = 'Def',

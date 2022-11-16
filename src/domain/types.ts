@@ -1,4 +1,4 @@
-export const enum PokemonTypeEnum {
+export enum PokemonTypeEnum {
   Normal = "normal",
   Fire = "fire",
   Water = "water",

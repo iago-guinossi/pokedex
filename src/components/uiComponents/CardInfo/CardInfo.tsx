@@ -8,7 +8,6 @@ export const CardInfo = styled.div`
   box-sizing: border-box;
   padding-bottom: 30px;
   width: 100%;
-  /* height: 210px; */
   border-radius: 25px;
   background-color: white;
 `;
