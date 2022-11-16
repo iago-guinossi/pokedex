@@ -14,7 +14,7 @@ const Container = styled.form`
   align-items: center;
   justify-content: space-between;
   height: 90px;
-  max-width: 1660px ;
+  max-width: 1650px;
   padding: 0 25px;
   box-sizing: border-box;
   border-radius: 15px;

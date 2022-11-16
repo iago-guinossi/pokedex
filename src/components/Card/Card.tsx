@@ -40,7 +40,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 1700px;
+  max-width: 1650px;
 `;
 
 const CardInt = styled(CardInfo)`
