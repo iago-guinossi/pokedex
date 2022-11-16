@@ -10,7 +10,7 @@ const ButtonContainer = styled(Tag)`
   align-items: center;
   padding: 0;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 `;
 
 const NextButton = styled.button`
