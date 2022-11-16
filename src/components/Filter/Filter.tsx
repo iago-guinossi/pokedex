@@ -65,7 +65,7 @@ export function Filter() {
   return (
   
       <Container onSubmit={handleSubmit} onChange={handleChange}>
-        <Text placeholder="Search your Pokemon!" />
+        <Text value={name} placeholder="Search your Pokemon!" />
         <Submit />
       </Container>
   );
