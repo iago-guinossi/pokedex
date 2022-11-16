@@ -22,8 +22,8 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <PokemonListProvider>
         <PokemonDetailsProvider>
+      <PokemonListProvider>
           <Container>
             <ThemeProvider theme={THEME_RAIOROS}>
               <SubContainer>
@@ -33,8 +33,8 @@ function App() {
               <PokeInfo />
             </ThemeProvider>
           </Container>
-        </PokemonDetailsProvider>
       </PokemonListProvider>
+        </PokemonDetailsProvider>
     </QueryClientProvider>
   );
 }
