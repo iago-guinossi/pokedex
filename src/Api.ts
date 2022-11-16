@@ -9,7 +9,7 @@ export const pokemonApi = {
     name: string
   ): Promise<{ pokemon: GetPokemonResponse }> {
     const { data } = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/${name}/`
+      `https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}/`
     );
     return data;
   },
