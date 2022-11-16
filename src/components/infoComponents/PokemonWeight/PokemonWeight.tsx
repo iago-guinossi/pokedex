@@ -23,7 +23,7 @@ export function PokemonWeight() {
   const pokemon = pokemonDetails?.pokemonInfo.pokemon
   return (
     <WeightContainer>
-      <Title>Width</Title>
+      <Title>Weight</Title>
       <Weight color="lightgray">{(pokemon.weight)/10}Kg {/** 130 hectogramas */}</Weight>
       {/** https://pokeapi.co/api/v2/pokemon/2 */}
     </WeightContainer>
