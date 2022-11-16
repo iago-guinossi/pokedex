@@ -30,14 +30,3 @@ const ContainerEntry = styled.div`
     </ContainerEntry>
   );
 }
-
-// const id = 2
-
-// const pokemon = await getPokemon(id)
-
-// async function getPokemon(pokeNumber: number) {
-//   const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokeNumber}/`)
-//   const data = await response.json()
-  
-//   return data
-// }
