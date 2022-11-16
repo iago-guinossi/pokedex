@@ -65,7 +65,7 @@ function PokemonCard({ pokemon, id }: PokemonCardProps) {
   };
 
   return (
-    <CardExt key={id} onClick={() => handleClick(id + 1)}>
+    <CardExt key={id} onClick={() => handleClick(id)}>
       <PokeImg
         src={id > 649 ? pokemon.sprites.front_default : pokemon.sprites.other.dream_world.front_default}
         alt={pokemon.species.name}
