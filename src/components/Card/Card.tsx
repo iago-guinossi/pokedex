@@ -18,6 +18,11 @@ const CardExt = styled.div`
   align-items: flex-end;
 `;
 
+const CardContainer = styled.div`
+display:flex;
+flex-direction: column;
+`
+
 const PokeImg = styled.img`
   position: absolute;
   height: 100px;
@@ -41,6 +46,10 @@ const Container = styled.div`
 const CardInt = styled(CardInfo)`
   padding: 70px 0 30px 0;
 `;
+
+const Button = styled(CardInfo)`
+padding: 30px 0;
+`
 
 type PokemonCardProps = {
   pokemon: GetPokemonResponse;
@@ -75,22 +84,23 @@ function PokemonCard({ pokemon, id }: PokemonCardProps) {
 
 // TODO: Refactor to List()
 export function List() {
-  const { nextPage, isLoading, pokeList } = usePokemonList();
+  const { nextPage, isLoading, pokeList, prevPage, page } = usePokemonList();
 
-  if (isLoading || (pokeList || []).length < 1)
+  if ((pokeList || []).length < 1)
     return (
-      <>
-        <Container>carrregfamdop</Container>
-        <button onClick={nextPage}>proxima pagina</button>
-      </>
+        <Button onClick={nextPage}>Start List Pokekon!</Button>
     );
 
   return (
+    <CardContainer>
     <Container>
       {pokeList?.map((poke) => (
         <PokemonCard pokemon={poke} key={poke.name} id={poke.id} />
       ))}
-      <button onClick={nextPage}>proxima pagina</button>
     </Container>
+      <Button onClick={nextPage}>Next Page!</Button>
+
+      {page.offset === 6 ? null : <Button onClick={prevPage}>Previous Page!</Button>}
+    </CardContainer>
   );
 }
