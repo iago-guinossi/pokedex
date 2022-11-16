@@ -13,7 +13,7 @@ import { NumberPokemon } from "../uiComponents/NumberPokemon";
 import { PokemonType } from "../uiComponents/PokemonType";
 
 const Container = styled.div`
-  max-width: 480px;
+  max-width: 440px;
   display: block;
   `;
 
