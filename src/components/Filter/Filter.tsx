@@ -4,6 +4,7 @@ import { PokemonTypeEnum } from "../../domain/types";
 import { useChosePokemon } from "../Provider/ListPokemonProvider";
 import { PokemonType } from "../uiComponents/PokemonType";
 import { useId } from "../Provider/ListPokemonProvider";
+import { usePokemonDetails } from "../Provider/PokemonDetails";
 
 const Container = styled.form`
   ${({ theme }) => `
@@ -45,13 +46,25 @@ const Submit = styled.button`
 `;
 
 export function Filter() {
+  const pokeDetails = usePokemonDetails()
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!name) {
+      return;
+    }
+    pokeDetails?.setPokemon(name);
+    setName("");
+  }
+
+  const [name, setName] = React.useState("");
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setName(e.target.value);
   }
 
   return (
   
-      <Container onSubmit={handleSubmit}>
+      <Container onSubmit={handleSubmit} onChange={handleChange}>
         <Text placeholder="Search your Pokemon!" />
         <Submit />
       </Container>
