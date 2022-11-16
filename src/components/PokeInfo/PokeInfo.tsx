@@ -53,6 +53,14 @@ const PokeTypeContainer = styled.div`
 
 const AbilMiscContainer = styled.div``;
 
+const Close = styled.div`
+align-self: flex-end;
+margin-top: -100px;
+margin-right: 15px;
+position: absolute;
+cursor: pointer;
+`
+
 export function PokeInfo() {
   const pokemonDetails = usePokemonDetails();
   const pokemon = pokemonDetails?.pokemonInfo?.pokemon;
@@ -74,7 +82,8 @@ export function PokeInfo() {
         alt={pokemon.species.name}
       />
       </ImgContainer>
-      <Card onClick={() => handleClick()}>
+      <Card>
+        <Close  onClick={() => handleClick()}><NamePokemon size="large">X</NamePokemon></Close>
         <NumberPokemon>
           N°{pokemonSpecies.pokedex_numbers[0].entry_number}
         </NumberPokemon>
