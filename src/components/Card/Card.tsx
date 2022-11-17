@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 import { GetPokemonResponse } from "../../domain/pokemon";
+import { useWindowSize } from "../../hooks/useWindowSize";
 import { usePokemonList } from "../Provider/ListPokemonProvider";
 import { usePokemonDetails } from "../Provider/PokemonDetails/PokemonDetails";
+import { useView } from "../Provider/ViewProvider";
 import { CardInfo } from "../uiComponents/CardInfo";
 import { NamePokemon } from "../uiComponents/NamePokemon";
 import { NumberPokemon } from "../uiComponents/NumberPokemon";
@@ -37,11 +39,12 @@ const PokeTypeContainer = styled.div`
   flex-direction: row;
 `;
 
-const Container = styled.div`
+const AllCards = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   max-width: 1650px;
+  justify-content: space-around;
 `;
 
 const CardInt = styled(CardInfo)`
@@ -69,9 +72,11 @@ type PokemonCardProps = {
 
 function PokemonCard({ pokemon, id }: PokemonCardProps) {
   const pokeDetails = usePokemonDetails();
+  const { setView } = useView();
 
   const handleClick = (id: string | number) => {
     pokeDetails?.setPokemon(id);
+    setView(false);
   };
 
   return (
@@ -99,10 +104,16 @@ function PokemonCard({ pokemon, id }: PokemonCardProps) {
 
 export function List() {
   const { nextPage, isLoading, pokeList, prevPage, page } = usePokemonList();
-
+  const { view } = useView();
   useEffect(() => {
     nextPage();
   }, []);
+
+  const size = useWindowSize();
+
+  if (size.width < 821 && !view) {
+    return null;
+  }
 
   if (isLoading)
     return (
@@ -114,13 +125,13 @@ export function List() {
 
   return (
     <CardContainer>
-      <Container>
+      <AllCards>
         {pokeList?.map((poke) =>
           poke === null ? null : (
             <PokemonCard pokemon={poke} key={poke.name} id={poke.id} />
           )
         )}
-      </Container>
+      </AllCards>
       {page.offset > 898 ? null : (
         <Button onClick={nextPage}>Next Page!</Button>
       )}

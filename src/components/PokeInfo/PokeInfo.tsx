@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Type } from "../../domain/pokemon";
+import { useWindowSize } from "../../hooks/useWindowSize";
 import { ButtonNextPrev } from "../infoComponents/ButtonNextPrev";
 import { MiscInfo } from "../infoComponents/MiscInfo";
 import { PokeAbility } from "../infoComponents/PokeAbility";
@@ -7,6 +8,7 @@ import { PokemonEntry } from "../infoComponents/PokemonEntry";
 import { PokemonEvo } from "../infoComponents/PokemonEvo";
 import { PokemonStats } from "../infoComponents/PokemonStats";
 import { usePokemonDetails } from "../Provider/PokemonDetails/PokemonDetails";
+import { useView } from "../Provider/ViewProvider";
 import { CardInfo } from "../uiComponents/CardInfo";
 import { NamePokemon } from "../uiComponents/NamePokemon";
 import { NumberPokemon } from "../uiComponents/NumberPokemon";
@@ -15,6 +17,9 @@ import { PokemonType } from "../uiComponents/PokemonType";
 const Container = styled.div`
   max-width: 440px;
   display: block;
+  @media (max-width: 820px) {
+    max-width: 100%;
+  }
 `;
 
 const LoadContainer = styled.div`
@@ -65,10 +70,16 @@ export function PokeInfo() {
   const pokemonDetails = usePokemonDetails();
   const pokemon = pokemonDetails?.pokemonInfo?.pokemon;
   const pokemonSpecies = pokemonDetails?.pokemonInfo?.pokemonSpecies;
-
+  const { view, setView } = useView();
+  const size = useWindowSize();
   const handleClick = () => {
     pokemonDetails?.setPokemon(null);
+    setView(true);
   };
+
+  if (size.width < 821 && view) {
+    return null;
+  }
 
   if (pokemonDetails?.pokemonInfo === null) return null;
 

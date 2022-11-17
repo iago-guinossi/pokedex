@@ -6,6 +6,9 @@ import { Filter } from "./components/Filter";
 import { PokeInfo } from "./components/PokeInfo";
 import { PokemonListProvider } from "./components/Provider/ListPokemonProvider";
 import { PokemonDetailsProvider } from "./components/Provider/PokemonDetails/PokemonDetails";
+import { useView, ViewProvider } from "./components/Provider/ViewProvider";
+import { useWindowSize } from "./hooks/useWindowSize";
+
 import { THEME_RAIOROS } from "./styles";
 
 const Container = styled.div`
@@ -17,22 +20,42 @@ const Container = styled.div`
 const SubContainer = styled.div`
   display: block;
 `;
+
+const ContainerMediaQuery = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 const queryClient = new QueryClient();
 
 function App() {
+  const { view } = useView();
+  const size = useWindowSize();
   return (
     <QueryClientProvider client={queryClient}>
       <PokemonDetailsProvider>
         <PokemonListProvider>
-          <Container>
-            <ThemeProvider theme={THEME_RAIOROS}>
-              <SubContainer>
-                <Filter />
-                <List />
-              </SubContainer>
-              <PokeInfo />
-            </ThemeProvider>
-          </Container>
+          <ViewProvider>
+            {size.width < 821 ? (
+              <ThemeProvider theme={THEME_RAIOROS}>
+                <ContainerMediaQuery>
+                  <Filter />
+                  <List />
+                  <PokeInfo />
+                </ContainerMediaQuery>
+              </ThemeProvider>
+            ) : (
+              <Container>
+                <ThemeProvider theme={THEME_RAIOROS}>
+                  <SubContainer>
+                    <Filter />
+                    <List />
+                  </SubContainer>
+                  <PokeInfo />
+                </ThemeProvider>
+              </Container>
+            )}
+          </ViewProvider>
         </PokemonListProvider>
       </PokemonDetailsProvider>
     </QueryClientProvider>

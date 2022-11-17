@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { usePokemonDetails } from "../Provider/PokemonDetails";
+import { useView } from "../Provider/ViewProvider";
 
 const Container = styled.form`
   ${({ theme }) => `
@@ -16,6 +17,9 @@ const Container = styled.form`
   border-radius: 15px;
   box-shadow: 10px 10px 15px rgba(255, 255, 255, 0.4);
   margin: 20px;
+  @media (max-width: 820px) {
+    width: 90%;
+  }
 `;
 
 const Text = styled.input`
@@ -43,6 +47,7 @@ const Submit = styled.button`
 `;
 
 export function Filter() {
+  const {setView} = useView()
   const pokeDetails = usePokemonDetails();
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -50,6 +55,7 @@ export function Filter() {
       return;
     }
     pokeDetails?.setPokemon(name);
+    setView(false)
     setName("");
   }
 

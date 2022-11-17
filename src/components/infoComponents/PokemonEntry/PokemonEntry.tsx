@@ -13,6 +13,9 @@ const ContainerEntry = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 820px){
+    max-width: 100%;
+  }
 `;
 
 export function PokemonEntry() {

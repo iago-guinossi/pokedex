@@ -26,6 +26,10 @@ const Container = styled(Tag)`
   margin: 5px;
   box-sizing: border-box;
   padding: 5px 5px;
+  @media (max-width: 820px) {
+    max-width: 100%;
+    margin: 2px;
+  }
 `;
 
 const StatsBar = styled.div`
@@ -56,7 +60,9 @@ export const PokemonStats = function () {
           return (
             <Container key={i} color="lightgray">
               <TagRounded
-                color={statsToColorMapper(PokemonStatsEnum[stats.stat.name as keyof StatsToColorMapper])}
+                color={statsToColorMapper(
+                  PokemonStatsEnum[stats.stat.name as keyof StatsToColorMapper]
+                )}
               >
                 {PokemonStatsEnum[stats.stat.name as keyof StatsToColorMapper]}
               </TagRounded>
