@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { usePokemonDetails } from "../Provider/PokemonDetails";
 import { useView } from "../Provider/ViewProvider";
+import imgPokeball from '../../assets/pokeball-button.png'
 
 const Container = styled.form`
   ${({ theme }) => `
@@ -39,7 +40,7 @@ const Submit = styled.button`
   border: none;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url(/src/assets/pokeball-button.png);
+  background-image: url(${imgPokeball});
   background-color: #ff5350;
   background-size: 20px;
   box-shadow: 15px 15px 20px rgba(255, 83, 80, 0.6);

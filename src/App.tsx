@@ -26,6 +26,17 @@ const ContainerMediaQuery = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+const Footer = styled.a`
+  font-family: "Barlow", sans-serif;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+`;
+
 const queryClient = new QueryClient();
 
 function App() {
@@ -55,6 +66,12 @@ function App() {
                 </ThemeProvider>
               </Container>
             )}
+            <Footer
+              href="https://github.com/iago-guinossi/pokedex"
+              className="textoBase"
+            >
+              Desenvolvido por Iago Guinossi 2022.
+            </Footer>
           </ViewProvider>
         </PokemonListProvider>
       </PokemonDetailsProvider>
